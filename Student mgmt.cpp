@@ -7,8 +7,7 @@ struct Student
     char name[100];
     char phone[100];
     float percentage;
-    struct Student *next;
-    
+    struct Student *next;   
 }* head;
 void search(int rollnumber)
 {
@@ -32,37 +31,28 @@ char name[100];
 char phone[100];
 float percentage;
 struct Student *next;
-
 }* head;
 void insert(int rollnumber, char* name, char* phone, float percentage)
 {
-
 struct Student * student = (struct Student *) malloc(sizeof(struct Student));
 student->rollnumber = rollnumber;
 strcpy(student->name, name);
 strcpy(student->phone, phone);
 student->percentage = percentage;
 student->next = NULL;
-
 if(head==NULL){
-// if head is NULL
-// set student as the new head
 head = student;
 }
 else{
-// if list is not empty
-// insert student in beginning of head
 student->next = head;
 head = student;
 }
-
 }
 void Delete(int rollnumber)
 {
     struct Student * temp1 = head;
     struct Student * temp2 = head; 
-    while(temp1!=NULL){
-        
+    while(temp1!=NULL){     
         if(temp1->rollnumber==rollnumber){
             
             printf("Record with roll number %d Found !!!\n", rollnumber);
@@ -77,15 +67,12 @@ void Delete(int rollnumber)
             }
             
             printf("Record Successfully Deleted !!!\n");
-            return;
-            
+            return;           
         }
         temp2 = temp1;
-        temp1 = temp1->next;
-        
+        temp1 = temp1->next;        
     }
-    printf("Student with roll number %d is not found !!!\n", rollnumber);
-    
+    printf("Student with roll number %d is not found !!!\n", rollnumber);  
 }
 void display()
 {
@@ -96,8 +83,7 @@ void display()
         printf("Name: %s\n", temp->name);
         printf("Phone: %s\n", temp->phone);
         printf("Percentage: %0.4f\n\n", temp->percentage);
-        temp = temp->next;
-        
+        temp = temp->next;       
     }
 }
 int main()
@@ -148,7 +134,6 @@ int main()
         }
         
     } while (choice != 0);
-}
-    
+}   
 return 0;	
 }
