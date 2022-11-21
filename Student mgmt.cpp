@@ -9,21 +9,6 @@ struct Student
     float percentage;
     struct Student *next;   
 }* head;
-void search(int rollnumber)
-{
-struct Student * temp = head;
-while(temp!=NULL){
-if(temp->rollnumber==rollnumber){
-printf("Roll Number: %d\n", temp->rollnumber);
-printf("Name: %s\n", temp->name);
-printf("Phone: %s\n", temp->phone);
-printf("Percentage: %0.4f\n", temp->percentage);
-return;
-}
-temp = temp->next;
-}
-printf("Student with roll number %d is not found !!!\n", rollnumber);
-}
 void insert(int rollnumber, char* name, char* phone, float percentage)
 {
 struct Student * student = (struct Student *) malloc(sizeof(struct Student));
@@ -40,15 +25,47 @@ student->next = head;
 head = student;
 }
 }
+void search(int rollnumber)
+{
+struct Student * temp = head;
+while(temp!=NULL){
+if(temp->rollnumber==rollnumber){
+printf("Roll Number: %d\n", temp->rollnumber);
+printf("Name: %s\n", temp->name);
+printf("Phone: %s\n", temp->phone);
+printf("Percentage: %0.4f\n", temp->percentage);
+return;
+}
+temp = temp->next;
+}
+printf("Student with roll number %d is not found !!!\n", rollnumber);
+}
+void update(int rollnumber)
+{
+    struct Student * temp = head;
+    while(temp!=NULL){
+        if(temp->rollnumber==rollnumber){
+            printf("Record with roll number %d Found !!!\n", rollnumber);
+            printf("Enter new name: ");
+            scanf("%s", temp->name);
+            printf("Enter new phone number: ");
+            scanf("%s", temp->phone);
+            printf("Enter new percentage: ");
+            scanf("%f",&temp->percentage);
+            printf("Updation Successful!!!\n");
+            return;
+        }
+        temp = temp->next;       
+    }
+    printf("Student with roll number %d is not found !!!\n", rollnumber);
+}
 void Delete(int rollnumber)
 {
     struct Student * temp1 = head;
     struct Student * temp2 = head; 
     while(temp1!=NULL){     
         if(temp1->rollnumber==rollnumber){
-            
             printf("Record with roll number %d Found !!!\n", rollnumber);
-            
             if(temp1==temp2){
                 head = head->next;
                 free(temp1);
@@ -57,7 +74,6 @@ void Delete(int rollnumber)
                 temp2->next = temp1->next;
                 free(temp1); 
             }
-            
             printf("Record Successfully Deleted !!!\n");
             return;           
         }
@@ -124,8 +140,6 @@ int main()
                 display();
                 break;
         }
-        
     } while (choice != 0);
-}   
 return 0;	
 }
