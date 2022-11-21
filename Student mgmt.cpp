@@ -24,14 +24,6 @@ temp = temp->next;
 }
 printf("Student with roll number %d is not found !!!\n", rollnumber);
 }
-struct Student
-{
-int rollnumber;
-char name[100];
-char phone[100];
-float percentage;
-struct Student *next;
-}* head;
 void insert(int rollnumber, char* name, char* phone, float percentage)
 {
 struct Student * student = (struct Student *) malloc(sizeof(struct Student));
